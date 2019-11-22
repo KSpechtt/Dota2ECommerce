@@ -3,7 +3,12 @@ nav.breadcrumb.is-small aria-label="breadcrumbs"
     li
       = link_to 'Home', root_path
     li.is-active   About Us
-h2.title About us!
-- @about.each do |a|
-  p
-    = a.description
+.section
+  .container
+    .columns.is-centered
+      .column.is-2
+        .container
+          h2.title About us!
+          - @about.each do |a|
+            p
+              = a.description

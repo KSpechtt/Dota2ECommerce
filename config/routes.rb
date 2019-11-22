@@ -3,6 +3,9 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+  devise_for :users, controllers: {
+    registrations: 'registrations'
+  }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   post 'items/add_to_cart/:id', to: 'items#add_to_cart', as: 'add_to_cart'

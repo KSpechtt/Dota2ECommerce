@@ -3,13 +3,18 @@ nav.breadcrumb.is-small aria-label="breadcrumbs"
     li
       = link_to 'Home', root_path
     li.is-active   Contact Us
-h2.title Contact Information
-- @contact.each do |c|
-  ul
-    li
-      = c.name
-    li
-      = c.phone_number
-    li
-      = c.email
-    ul
+.section
+  .container
+    .columns.is-centered
+      .column.is-4
+        .container
+          h2.title Contact Information
+          - @contact.each do |c|
+            ul
+              li
+                = c.name
+              li
+                = c.phone_number
+              li
+                = c.email
+              ul
