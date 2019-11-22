@@ -36,7 +36,7 @@
               <div class="card">
                   <div class="card-image">
                       <figure class="image is-4by3">
-                          <%= image_tag item.image %>
+                          <%= image_tag item.image, alt: item.name %>
                       </figure>
                   </div>
                   <div class="card-content">
@@ -53,8 +53,8 @@
                               </p>
                           </div>
                       </div>
-                      <%= form_tag(cart_items_path, :method => "get", id: "filter-form") do %>
-                          <p> <%= link_to "Remove from Cart", remove_from_cart_path(item), method: :delete, class:"button is-danger" %> </p>
+                      <%= form_tag(cart_items_path, :method => "get") do %>
+                          <p> <%= link_to "Remove from Cart", remove_from_cart_path(item), method: :delete, class:"button is-info" %> </p>
                       <%end%>
                   </div>
               </div>

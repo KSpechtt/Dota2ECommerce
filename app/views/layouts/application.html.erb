@@ -1,72 +1,50 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Dota</title>
-    <%= csrf_meta_tags %>
-        <%= csp_meta_tag %>
-
-            <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-                <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
-</head>
-
-<body>
-    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item">
-                <img src="https://i.imgur.com/9E153BZ.png" alt="#" width="60" height="30">
-            </a>
-
-            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
-
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-                <%=link_to 'Home', root_path, class: 'navbar-item' %>
-                    <%=link_to 'Store', items_path, class: 'navbar-item' %>
-                        <%=link_to 'Categories', categories_path, class: 'navbar-item' %>
-                            <div class="navbar-item has-dropdown is-hoverable">
-                                <a class="navbar-link">
-          More
-        </a>
-
-                                <div class="navbar-dropdown">
-                                    <%=link_to 'About', '/about', class: 'navbar-item' %>
-                                        <%=link_to 'Contact', '/contact', class: 'navbar-item' %>
-                                            <hr class="navbar-divider">
-                                </div>
-                            </div>
-            </div>
-
-            <div class="navbar-end">
-
-                <div class="navbar-item">
-                    <div >
-                        <%= form_tag(search_results_items_path, :method => "get", id: "search-form", class: 'navbar-item') do %>
-                        <%= select_tag :category_name, options_from_collection_for_select(Category.all, 'id', 'category_name'), :prompt => "Category", class: 'navbar-item' %>
-                        <%= text_field_tag :search, params[:search], placeholder: "Search a Product", class: "input"%>
-                        <%= submit_tag "Search", class:"button" %>
-                        <% end %>
-                    </div>
-                </div>
-                <div class="navbar-item">
-                    <div class="buttons">
-                        <%= link_to "Cart", cart_items_path, method: :get, class:"button is-danger" %>
-                        <%= link_to "Checkout", '#', method: :get, class:"button is-danger" %>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </nav>
-    <section class="section">
-        <%= yield %>
-    </section>
-</body>
-
-</html>
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title Dota
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    link href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css" rel="stylesheet" /
+  body
+    nav.navbar.is-black aria-label=("main navigation") role="navigation"
+      .navbar-brand
+        a.navbar-item
+          img alt="#" height="30" src="https://i.imgur.com/9E153BZ.png" width="60" /
+        a.navbar-burger.burger aria-expanded="false" aria-label="menu" data-target="navbarBasicExample" role="button"
+          span aria-hidden="true"
+          span aria-hidden="true"
+          span aria-hidden="true"
+      #navbarBasicExample.navbar-menu
+        .navbar-start
+          = link_to 'Home', root_path, class: 'navbar-item'
+          = link_to 'Store', items_path, class: 'navbar-item'
+          = link_to 'Categories', categories_path, class: 'navbar-item'
+          .navbar-item.has-dropdown.is-hoverable
+            a.navbar-link
+              | More
+            .navbar-dropdown
+              = link_to 'About', '/about', class: 'navbar-item'
+              = link_to 'Contact', '/contact', class: 'navbar-item'
+              hr.navbar-divider/
+        .navbar-end
+          .navbar-item
+            div
+              = form_tag(filter_results_items_path, :method => "get", id: "filter-form", class: 'navbar-item') do
+                = select_tag :onSale, options_for_select(["Sale", "Regular Price" ]), class: 'navbar-item'
+                = select_tag :cost, options_for_select(["High", "Low" ]), class: 'navbar-item'
+                = submit_tag "Filter", class:"button is-info"
+          .navbar-item
+            div
+              = form_tag(search_results_items_path, :method => "get", id: "search-form", class: 'navbar-item') do
+                = select_tag :category_name, options_from_collection_for_select(Category.all, 'id', 'category_name'), :prompt => "Category", class: 'navbar-item'
+                = text_field_tag :search, params[:search], placeholder: "Search a Product", class: "input", class: 'navbar-item'
+                = submit_tag "Search", class:"button is-info"
+          .navbar-item
+            .buttons
+              = link_to "Cart", cart_items_path, method: :get, class:"button is-info"
+              = link_to "Checkout", '#', method: :get, class:"button is-info"
+    section.section
+      = yield

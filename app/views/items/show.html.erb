@@ -23,7 +23,7 @@
     <div class="card">
         <div class="card-image">
             <figure class="image is-4by3">
-                <%= image_tag @items.image %>
+                <%= image_tag @items.image, alt: @items.name %>
             </figure>
         </div>
         <div class="card-content">
@@ -43,8 +43,8 @@
             </div>
             <P>Quantity: <%=@items.quantity%></p>
             <br>
-<%= form_tag(filter_results_items_path, :method => "get", id: "filter-form") do %>
-            <p><%= link_to "Add to Cart", add_to_cart_path(@items.id), method: :post, class:"button is-danger" %></p>
+            <%= form_tag(cart_items_path, :method => "get", id: "add-to-cart-form") do %>
+            <p><%= link_to "Add to Cart", add_to_cart_path(@items.id), method: :post, class:"button is-info" %></p>
             <%end%>
         </div>
     </div>

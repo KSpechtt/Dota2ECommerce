@@ -1,10 +1,3 @@
-<div>
-              <%= form_tag(filter_results_items_path, :method => "get", id: "filter-form") do %>
-                    <%= select_tag :onSale, options_for_select(["Sale", "Regular Price" ]) %>
-                    <%= select_tag :cost, options_for_select(["High", "Low" ]) %>
-             <%= submit_tag "Filter", class:"button is-danger" %>
-                 <% end %>
-                 </div>
 
 
 <nav class="breadcrumb is-small" aria-label="breadcrumbs">
@@ -15,18 +8,6 @@
         <li class="is-active"><a href="#">Store</a></li>
     </ul>
 </nav>
-
-<%= debug session[:cart] %>
-
-
-<details>
-    <summary>Shopping Cart</summary>
-    <ul>
-        <%@cart.each do |item| %>
-            <li><%= item.name %></li>
-        <%end%>
-    </ul>
-</details>
 
 <div class="columns is-multiline">
         <%=render partial: @items%>
