@@ -1,0 +1,39 @@
+nav.breadcrumb.is-small aria-label="breadcrumbs"
+  ul
+    li
+      = link_to 'Home', root_path
+    li
+      = link_to 'Store', items_path
+    li.is-active
+      |   
+      p Cart
+  br/
+  - if flash[:notice]
+    .notice= flash[:notice]
+- if @cart.empty?
+  .container
+    div
+      h1.title Shopping Cart
+      p
+        | Your shopping cart is currently empty. Please check out our #{link_to 'store to add items', items_path}
+- else
+  h1.title Shopping Cart
+  .columns.is-multiline
+    - @cart.each do |item|
+      .column.is-2
+        .card
+          .card-image
+            figure.image.is-4by3
+              = image_tag item.image, alt: item.name
+          .card-content
+            .media
+              .media-content
+                p.title.is-4
+                  = link_to item.name, item
+                p.subtitle.is-6
+                  = number_to_currency item.cost
+                p.subtitle.is-6
+                  = @item_quantity
+            = form_tag(cart_items_path, :method => "get") do
+              p
+                = link_to "Remove from Cart", remove_from_cart_path(item), method: :delete, class:"button is-info"

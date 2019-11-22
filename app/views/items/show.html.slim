@@ -1,0 +1,31 @@
+nav.breadcrumb.is-small aria-label="breadcrumbs"
+  ul
+    li
+      = link_to 'Home', root_path
+    li
+      = link_to 'Store', items_path
+    li.is-active
+      |   
+      | #{@items.name}
+  br/
+  - if flash[:notice]
+    .notice= flash[:notice]
+.column.is-2
+  .card
+    .card-image
+      figure.image.is-4by3
+        = image_tag @items.image, alt: @items.name
+    .card-content
+      .media
+        .media-content
+          p.title.is-4
+            = @items.name
+          p.subtitle.is-6
+            = number_to_currency @items.cost
+      .content
+        = @items.lore
+      p
+        | Quantity: #{@items.quantity}
+      br/
+      = form_tag(cart_items_path, :method => "get", id: "add-to-cart-form") do
+        p= link_to "Add to Cart", add_to_cart_path(@items.id), method: :post, class:"button is-info"

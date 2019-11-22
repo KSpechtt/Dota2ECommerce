@@ -1,0 +1,10 @@
+nav.breadcrumb.is-small aria-label="breadcrumbs"
+  ul
+    li
+      = link_to 'Home', root_path
+    li.is-active   Categories
+.tabs.is-centered
+  ul
+    - @categories.each do |c|
+      li
+        = link_to c.category_name, c

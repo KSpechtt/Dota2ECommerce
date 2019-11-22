@@ -1,0 +1,13 @@
+.column.is-2
+  .card
+    .card-image
+      figure.image.is-4by3
+        = image_tag item.image, alt: item.name
+    .card-content
+      .media
+        .media-content
+          p.title.is-4
+            = link_to item.name, item
+          p.subtitle.is-6
+            = number_to_currency item.cost
+      .content

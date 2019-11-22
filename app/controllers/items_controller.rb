@@ -19,10 +19,10 @@ class ItemsController < ApplicationController
     @c = params[:category_name]
 
     @items = if @c.empty?
-               Item.where('name LIKE ?', "%#{@q}%").page(params[:page])
+               Item.where('name LIKE ?', "%#{@q}%").page(params[:page]).per(12)
              else
                Item.where('name LIKE ? AND category_id = ?', "%#{@q}%", @c)
-                   .page(params[:page]).per(12)
+                   .page(params[:page])
              end
   end
 
@@ -42,8 +42,10 @@ class ItemsController < ApplicationController
 
     @items = if @s == 'Sale'
                Item.where('onSale = 1').order(cost: :desc).page(params[:page])
+                   .per(12)
              else
                Item.where('onSale = 0').order(cost: :desc).page(params[:page])
+                   .per(12)
              end
   end
 
@@ -51,9 +53,9 @@ class ItemsController < ApplicationController
     @s = params[:onSale]
 
     @items = if @s == 'Sale'
-               Item.where('onSale = 1').order(:cost).page(params[:page])
+               Item.where('onSale = 1').order(:cost).page(params[:page]).per(12)
              else
-               Item.where('onSale = 0').order(:cost).page(params[:page])
+               Item.where('onSale = 0').order(:cost).page(params[:page]).per(12)
              end
   end
 

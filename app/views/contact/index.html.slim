@@ -1,0 +1,15 @@
+nav.breadcrumb.is-small aria-label="breadcrumbs"
+  ul
+    li
+      = link_to 'Home', root_path
+    li.is-active   Contact Us
+h2.title Contact Information
+- @contact.each do |c|
+  ul
+    li
+      = c.name
+    li
+      = c.phone_number
+    li
+      = c.email
+    ul
