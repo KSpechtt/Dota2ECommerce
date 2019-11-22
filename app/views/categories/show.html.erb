@@ -1,0 +1,19 @@
+<nav class="breadcrumb is-small" aria-label="breadcrumbs">
+    <ul>
+        <li>
+            <%=link_to 'Home', root_path %>
+        </li>
+        <li>
+            <%=link_to 'Categories', categories_path %>
+        </li>
+        <li class="is-active">&#160;&#160;
+            <%= @categories.category_name%>
+        </li>
+    </ul>
+</nav>
+    <div class="columns is-multiline">
+        <%= render partial: 'items/item',
+            collection: @items,
+            locals: { name_is_link: true } %>
+            </div>
+<%=paginate @items %>

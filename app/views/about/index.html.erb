@@ -1,0 +1,16 @@
+<nav class="breadcrumb is-small" aria-label="breadcrumbs">
+    <ul>
+        <li>
+            <%=link_to 'Home', root_path %>
+        </li>
+        <li class="is-active">&#160;&#160;About Us</li>
+    </ul>
+</nav>
+
+<h2 class='title'>About us!</h2>
+
+<% @about.each do |a| %>
+    <p>
+        <%= a.description %>
+    </p>
+    <%end%>

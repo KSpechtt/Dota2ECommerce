@@ -1,0 +1,26 @@
+AllCops:
+  Exclude:
+    - db/**/*
+    - node_modules/**/*
+    - config/**/*
+    - script/**/*
+    - bin/**/*
+    - test/**/*
+    - app/admin/**/*
+    - app/channels/**/*
+    - app/jobs/**/*
+    - Gemfile
+    - Rakefile
+    - config.ru
+
+Encoding:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 99
+
+Rails/HasAndBelongsToMany:
+  Enabled: false

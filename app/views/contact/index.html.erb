@@ -1,0 +1,23 @@
+<nav class="breadcrumb is-small" aria-label="breadcrumbs">
+    <ul>
+        <li>
+            <%=link_to 'Home', root_path %>
+        </li>
+        <li class="is-active">&#160;&#160;Contact Us</li>
+    </ul>
+</nav>
+
+<h2 class='title'>Contact Information</h2>
+<%@contact.each do |c|%>
+    <ul>
+        <li>
+            <%=c.name%>
+        </li>
+        <li>
+            <%=c.phone_number%>
+        </li>
+        <li>
+            <%=c.email%>
+        </li>
+        <ul>
+            <%end%>
