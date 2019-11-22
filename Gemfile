@@ -25,6 +25,7 @@ gem 'kaminari'
 gem 'activeadmin'
 gem 'devise'
 gem 'rubocop'
+gem 'slim'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
