@@ -11,9 +11,11 @@ require 'json'
 require 'open-uri'
 require 'net/http'
 
+Province.destroy_all
+User.destroy_all
 AdminUser.destroy_all
-Item.destroy_all
 Category.destroy_all
+Item.destroy_all
 
 items = JSON.parse(open('https://pastebin.com/raw/v6bwPYuD').read)
 
@@ -23,6 +25,14 @@ items['itemdata'].each do |_items, data|
   )
 end
 
+Province.create(
+  name: 'Manitoba'
+)
+
+Province.create(
+  name: 'British Columbia'
+)
+
 items['itemdata'].each do |_items, data|
   c = Category.find_by(category_name: data['qual'])
   i = Item.create(
@@ -31,7 +41,7 @@ items['itemdata'].each do |_items, data|
     category: c,
     image: "https://steamcdn-a.akamaihd.net/apps/dota2/images/items/#{data['img']}",
     lore: data['lore'],
-    onSale: false,
+    onSale: rand < 0.5,
     quantity: 20
   )
 end
