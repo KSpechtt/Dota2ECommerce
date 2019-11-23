@@ -24,3 +24,6 @@ Metrics/LineLength:
 
 Rails/HasAndBelongsToMany:
   Enabled: false
+
+Style/EndOfLine:
+  EnforcedStyle: lf
